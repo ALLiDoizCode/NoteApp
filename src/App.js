@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Collection from './Components/Collection'
+import router from './Models/Router'
+import axios from 'axios';
 
-function App() {
+var route = router.routes.fetch
+
+const App = React.memo(() => {
+  const [object, setObject] = useState({
+    notes: []
+  })
+  const fetch = () => {
+    const result = axios({ url: router.server + route.endpoint, method: route.method });
+    result.then((obj) => {
+      setObject({notes:obj.data})
+    })
+  }
+  useEffect(() => {
+    setInterval(() => {
+      fetch()
+    },2000)
+  },object);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Collection notes={object.notes} />
   );
-}
+})
 
 export default App;
