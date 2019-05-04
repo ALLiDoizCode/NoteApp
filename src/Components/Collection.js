@@ -4,13 +4,13 @@ import Note from './Notes'
 const Collection = ({ notes }) => {
     console.log("rendering collection")
     return (
-        <div className="collection">
+        <React.Fragment>
             {
                 notes.map((note) => (
                     <Note  key={note._id} note={note}/>
                 ))
             }
-        </div>
+        </React.Fragment>
     );
 }
 

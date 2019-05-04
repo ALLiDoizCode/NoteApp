@@ -4,7 +4,17 @@ const Note = ({ note }) => {
     console.log("rendering note")
     return (
         <React.Fragment>
-             <a href="#!" className="collection-item">{note.title}</a>
+            <div className="col s12 m6">
+                <div className="card">
+                    <div className="card-content">
+                        <span className="card-title">{note.title}</span>
+                        <p style={{color:"#757575"}}>{note.text}</p>
+                    </div>
+                    <div className="card-action">
+                        <a href="#">Edit</a>
+                    </div>
+                </div>
+            </div>
         </React.Fragment>
     )
 }
