@@ -1,15 +1,19 @@
 import React from 'react';
+import Note from './Notes'
 
-const Collection = React.memo(({ notes }) => {
+const Collection = ({ notes }) => {
+    console.log("rendering collection")
     return (
         <div className="collection">
             {
                 notes.map((note) => (
-                    <a href="#!" className="collection-item" key={note._id}>{note.title}</a>
+                    <Note  key={note._id} note={note}/>
                 ))
             }
         </div>
     );
-})
+}
 
-export default Collection;
+export default React.memo(Collection,((prev,current) => {
+    return JSON.stringify(prev) == JSON.stringify(current)
+}));

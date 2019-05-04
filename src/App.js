@@ -5,7 +5,7 @@ import axios from 'axios';
 
 var route = router.routes.fetch
 
-const App = React.memo(() => {
+const App = () => {
   const [object, setObject] = useState({
     notes: []
   })
@@ -23,6 +23,6 @@ const App = React.memo(() => {
   return (
     <Collection notes={object.notes} />
   );
-})
+}
 
 export default App;
