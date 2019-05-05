@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Collection from './Components/Collection'
+import Modal from './Components/Modal'
 import Form from './Components/Form'
 import router from './Models/Router'
 import axios from 'axios'
@@ -29,10 +30,11 @@ const App = () => {
         <Form/>
       </div>
       <div className="row">
-        <div>
+        <div >
           <Collection notes={object.notes} />
         </div>
       </div>
+      <Modal/>
     </div>
   );
 }
