@@ -1,13 +1,14 @@
 import React from 'react'
 import { useStateValue } from './State'
+import Form from './Form'
 
-function Modal() {
+function EditModal() {
     const [notes, dispatch] = useStateValue();
     return (
-        <div id="modal1" className="modal">
+        <div id="modal2" className="modal">
             <div className="modal-content">
                 <h4>{notes.current.title}</h4>
-                <p>{notes.current.text}</p>
+                <Form  id={notes.current._id}/>
             </div>
             <div className="modal-footer">
                 <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
@@ -16,5 +17,4 @@ function Modal() {
     )
 }
 
-export default Modal
-
+export default EditModal

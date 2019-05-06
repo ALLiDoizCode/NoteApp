@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { save, fetch } from '../Client'
 import { useStateValue } from './State'
 
-const Form = () => {
+const Form = ({id}) => {
     console.log("rendering Form")
     const [notes, dispatch] = useStateValue();
 
     var submit = (e) => {
         e.preventDefault();
         if (note.text == "" || note.title == "") return
+        note._id = id
         save(() => {
             note = {
                 _id: "",
