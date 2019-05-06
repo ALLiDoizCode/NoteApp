@@ -1,17 +1,18 @@
 import React from 'react'
+import { useStateValue } from './State'
+
 function Modal() {
+    const [notes, dispatch] = useStateValue();
     return (
-        <React.Fragment>
-            <div id="modal1" className="modal">
-                <div className="modal-content">
-                    <h4>Modal Header</h4>
-                    <p>A bunch of text</p>
-                </div>
-                <div className="modal-footer">
-                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>{notes.current.title}</h4>
+                <p>{notes.current.text}</p>
             </div>
-        </React.Fragment>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
     )
 }
 

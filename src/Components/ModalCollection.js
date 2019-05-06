@@ -1,21 +1,21 @@
 import React from 'react'
-import Note from './Notes'
+import Modal from './Modal'
 import { useStateValue } from './State'
 
-const Collection = () => {
+const ModalCollection = () => {
     console.log("rendering collection")
-    const [{notes}, dispatch] = useStateValue();
+    const [{notes}, dispatch] = useStateValue({ notes: [] });
     return (
         <React.Fragment>
             {
                 notes.map((note) => (
-                    <Note key={note._id} note={note}  notes={notes} />
+                    <Modal key={note._id} note={note} />
                 ))
             }
         </React.Fragment>
     );
 }
 
-export default React.memo(Collection, ((prev, current) => {
+export default React.memo(ModalCollection, ((prev, current) => {
     return JSON.stringify(prev) == JSON.stringify(current)
 }));
