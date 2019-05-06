@@ -10,10 +10,10 @@ const App = () => {
   return (
     <div className="container">
       <div className="row"></div>
+      <StateProvider initialState={noteInitialState} reducer={noteReducer}>
       <div className="row">
         <Form />
       </div>
-      <StateProvider initialState={noteInitialState} reducer={noteReducer}>
         <Main />
         <Modal/>        
       </StateProvider>
