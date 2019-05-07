@@ -1,5 +1,6 @@
 var exports = module.exports = {};
 var server = "https://noteapi-boomtown.herokuapp.com/"
+//var server = "http://localhost:8080/"
 var routes = 
 {
     save:{

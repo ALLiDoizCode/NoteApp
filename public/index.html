@@ -33,8 +33,8 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4 id="title"></h4>
+      <p id="text"></p>
     </div>
     <div class="modal-footer">
       <a href="#!" onClick="initModal()" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -51,19 +51,32 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
 
+    var title = document.getElementById('title');
+    var text = document.getElementById('text');
+    const elem = document.getElementById('modal1');
+    const instance = M.Modal.init(elem, { dismissible: false });
     var path = window.location.pathname;
-    //var path = "test.com/noteName";
     var res = path.split("/").pop();
-    console.log(res);
-
     if (res != "" && res != undefined) {
-      const elem = document.getElementById('modal1');
-      const instance = M.Modal.init(elem, { dismissible: false });
-      instance.open();
+      axios.get('https://noteapi-boomtown.herokuapp.com/note/' + res)
+        .then(function (response) {
+          console.log(response);
+          // handle success
+          if (response.data.length > 0) {
+            title.innerText = response.data[0].title
+            text.innerText = response.data[0].text
+            instance.open();
+          }else {
+            title.innerText = "No Note Found"
+            instance.open()
+          }
+          console.log(response);
+        })
     } else {
       $(document).ready(function () {
         $('.modal').modal();
