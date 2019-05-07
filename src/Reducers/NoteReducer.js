@@ -1,5 +1,4 @@
 export const noteReducer = (state, action) => {
-    console.log(state)
     return action
 };
 

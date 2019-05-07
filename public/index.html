@@ -37,7 +37,7 @@
       <p id="text"></p>
     </div>
     <div class="modal-footer">
-      <a href="#!" onClick="initModal()" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" onClick="initModal()" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
   <!--
@@ -63,7 +63,9 @@
     var path = window.location.pathname;
     var res = path.split("/").pop();
     if (res != "" && res != undefined) {
-      axios.get('https://noteapi-boomtown.herokuapp.com/note/' + res)
+      var noteTitle = decodeURIComponent(res)
+      console.log(noteTitle)
+      axios.get('https://noteapi-boomtown.herokuapp.com/note/' + noteTitle)
         .then(function (response) {
           console.log(response);
           // handle success
@@ -88,8 +90,6 @@
         $('.modal').modal();
       });
     }
-
-
 
   </script>
 </body>
