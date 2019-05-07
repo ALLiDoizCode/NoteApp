@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { save, fetch } from '../Client'
 import { useStateValue } from './State'
 
 const Form = ({id}) => {
     console.log("rendering Form")
+    
     const [notes, dispatch] = useStateValue();
 
     var submit = (e) => {
@@ -35,7 +36,7 @@ const Form = ({id}) => {
                             <span className="helper-text" data-error="wrong" data-success="right"></span>
                         </div>
                         <div className="input-field col s12">
-                            <textarea id="textarea1" className="materialize-textarea" maxLength="50" onChange={(e) => note.text = e.target.value}></textarea>
+                            <textarea id="textarea1" className="materialize-textarea" onChange={(e) => note.text = e.target.value}></textarea>
                             <label htmlFor="textarea1">Note</label>
                         </div>
                         <button className="btn waves-effect waves-light" type="submit" name="action">Submit<i className="material-icons right">send</i></button>
