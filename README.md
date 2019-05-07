@@ -4,9 +4,7 @@
 
 ### Install
 
-```
 Insure you have Node and NPM installed
-```
 
 > npm start
 
