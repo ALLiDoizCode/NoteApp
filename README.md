@@ -17,3 +17,7 @@ You will also see any lint errors in the console.
 ### URL For Live site
 
 <a href="https://noteapi-boomtown.herokuapp.com">Link</a>
+
+You can also navigate directly to a note by adding the note title to the URL
+
+<a href="http://localhost:3000/Gloop">http://localhost:3000/Gloop</a>
